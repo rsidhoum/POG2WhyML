@@ -86,11 +86,11 @@ const XMLElement *TypingContext::getTypeElement(unsigned typref) const {
     return m_dom.at(typref);
 }
 
-const string TypingContext::getTypeTranslation(const XMLElement *dom) const {
+string TypingContext::getTypeTranslation(const XMLElement *dom) const {
     return this->getTypeTranslation(this->getTypRef(dom));
 }
 
-const string TypingContext::getTypeTranslation(unsigned typref) const {
+string TypingContext::getTypeTranslation(unsigned typref) const {
     assert(typref < m_dom.size());
     return m_translations.at(typref);
 }

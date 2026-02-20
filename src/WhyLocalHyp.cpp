@@ -39,7 +39,7 @@ void whyLocalHyp::declareWithoutDuplicate(const vector<whyLocalHyp*>& hypotheses
     declare(why);
 }
 
-const string whyLocalHyp::declareCallDuplicate() {
+string whyLocalHyp::declareCallDuplicate() {
     return string{};
     /* TODO
     if (duplicate == 0) {

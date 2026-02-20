@@ -46,7 +46,7 @@ void whyPredicate::collectVarAndTypes(const dict_t &enums,
     }
 }
 
-void whyPredicate::collectVarAndTypes(set<const string> &variables,
+void whyPredicate::collectVarAndTypes(set<string> &variables,
                                       dict_t &types,
                                       const XMLElement *formula,
                                       const dict_t &enums,
@@ -67,7 +67,7 @@ void whyPredicate::collectVarAndTypes(set<const string> &variables,
         return;
     }
     if (cstrEq(tag, "Quantified_Pred") || cstrEq(tag, "Quantified_Exp") || cstrEq(tag, "Quantified_Set")) {
-        set<const string> qVariables;
+        set<string> qVariables;
         dict_t qTypes;
         const XMLElement *child = formula->FirstChildElement();
         while(child != nullptr) {
@@ -112,7 +112,7 @@ void whyPredicate::collectVarAndTypes(set<const string> &variables,
     }
 }
 
-const string whyPredicate::declareCall() const {
+string whyPredicate::declareCall() const {
     string result;
     result.append("(");
     result.append(m_name);
@@ -502,7 +502,7 @@ bool whyPredicate::isDeferredSetElement(const XMLElement *e)
         e->FirstChildElement("Enumerated_Values") == nullptr;
 }
 
-const string whyPredicate::whyName(const XMLElement *ident, const dict_t& enums, bool& var) {
+string whyPredicate::whyName(const XMLElement *ident, const dict_t& enums, bool& var) {
     var = false;
     const char *val = ident->Attribute("value");
     if (cstrEq(val, "BOOL"))
@@ -546,7 +546,7 @@ const string whyPredicate::whyName(const XMLElement *ident, const dict_t& enums,
     return name;
 }
 
-const string whyPredicate::deferredSetWhyName(const XMLElement *e1)
+string whyPredicate::deferredSetWhyName(const XMLElement *e1)
 {
     const XMLElement *id = e1->FirstChildElement("Id");
     return std::string("v_") + id->Attribute("value") + std::string("_");
@@ -912,7 +912,7 @@ void whyPredicate::Translator::translateExtensionSeq(const XMLElement *ce, unsig
     }
 }
 
-const string whyPredicate::Translator::translation() {
+string whyPredicate::Translator::translation() {
     return m_acc.str();
 }
 
@@ -935,4 +935,3 @@ ostream& operator<<(ostream &os, const whyPredicate &wp) {
     os << "---" << std::endl;
     return os;
 }
-

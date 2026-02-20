@@ -24,7 +24,7 @@ using tinyxml2::XMLElement;
 
 #include "TypingContext.h"
 
-using dict_t = map<const string, const string>;
+using dict_t = map<string, string>;
 
 class whyLocalHyp;
 
@@ -42,11 +42,11 @@ public:
     virtual void translate(const dict_t &enums, const TypingContext &typeinfo);
 
     virtual void declare(ofstream &os);
-    const string declareCall() const;
+    string declareCall() const;
 
     string translateTypeInfo (const XMLElement *ti, const dict_t& enums);
 
-    const set<const string> &variables() const {
+    const set<string> &variables() const {
         return m_variables;
     }
 
@@ -60,8 +60,8 @@ public:
     static bool isEnumeratedSetElement(const XMLElement *e);
     static bool isDeferredSetElement(const XMLElement *e);
 
-    static const string deferredSetWhyName(const XMLElement *e1);
-    static const string whyName(const XMLElement *ident, const dict_t& enums, bool& var);
+    static string deferredSetWhyName(const XMLElement *e1);
+    static string whyName(const XMLElement *ident, const dict_t& enums, bool& var);
 
     static const std::string whyMAXINT;
     static const std::string whyMININT;
@@ -74,17 +74,17 @@ protected:
     string m_name;
 
     /// @brief the set of free symbols in the predicate
-    set<const string> m_variables;
+    set<string> m_variables;
 
     /// @brief associates to each free symbol a string representing the whyml type
     dict_t m_types; /// the domain is variables
 
-    vector<const string> m_functions;
+    vector<string> m_functions;
     dict_t m_structures;
 
     static const dict_t opDict;
 
-    virtual void collectVarAndTypes(set<const string> &variables,
+    virtual void collectVarAndTypes(set<string> &variables,
                                       dict_t &types,
                                       const XMLElement *formula,
                                       const dict_t &enums,
@@ -98,7 +98,7 @@ protected:
         void translateExtensionSet(const XMLElement *ce);
         void translateExtensionSeq(const XMLElement *ce, unsigned index);
         void translateVariables(const XMLElement *formula);
-        const string translation();
+        string translation();
     private:
         stringstream &m_acc;
         const dict_t& m_enums;
@@ -125,7 +125,7 @@ public:
     whyLocalHyp(const XMLElement *dom, const string &group, unsigned num);
 
     void declareWithoutDuplicate(const vector<whyLocalHyp*>&, ofstream& why);
-    const string declareCallDuplicate();
+    string declareCallDuplicate();
 
     bool is(unsigned num) const {
         return m_num == num;

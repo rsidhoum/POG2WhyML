@@ -6,6 +6,7 @@
 #include<sstream>
 #include<map>
 #include<vector>
+#include<cassert>
 
 using std::map;
 using std::pair;
@@ -256,4 +257,3 @@ void saveEnumeration(std::ofstream &out, dict_t &enums, const XMLElement *enumer
         << "forall x:" << enumName << ". mem x " << enums[setName] << "\n"
         << "\n";
 }
-

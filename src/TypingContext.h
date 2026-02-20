@@ -32,8 +32,8 @@ public:
     /// @return 
     const XMLElement * getTypeElement(const XMLElement *dom) const;
     const XMLElement * getTypeElement(unsigned typref) const;
-    const string getTypeTranslation(const XMLElement *dom) const;
-    const string getTypeTranslation(unsigned typref) const;
+    string getTypeTranslation(const XMLElement *dom) const;
+    string getTypeTranslation(unsigned typref) const;
 
     bool isInt(const XMLElement *dom) const;
     bool isReal(const XMLElement *dom) const;
@@ -44,7 +44,7 @@ public:
 
 private:
     vector<const XMLElement *> m_dom;
-    vector<const string > m_translations;
+    vector<string> m_translations;
 
     unsigned m_INTEGER;
     unsigned m_REAL;

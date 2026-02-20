@@ -5,8 +5,8 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 
-set(POG2WhyML_HEADERS
-    typingContext.h
+set(POG2WHY_HEADERS
+    TypingContext.h
     version.h
     WhyML.h
     WhyMLInternal.h
@@ -14,7 +14,7 @@ set(POG2WhyML_HEADERS
     )
 
 set(POG2WHY_SRC
-    typingContext.cpp
+    TypingContext.cpp
     exceptions.cpp
     WhyML.cpp
     WhyPredicate.cpp
